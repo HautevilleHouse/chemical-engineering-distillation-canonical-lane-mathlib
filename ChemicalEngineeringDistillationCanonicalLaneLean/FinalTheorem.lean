@@ -1,0 +1,19 @@
+import canonicalLaneMathlib.AdmissibleClass
+import HautevilleHouse.ChemicalEngineeringDistillationCanonicalLaneLean.VaporLiquidEquilibrium
+import HautevilleHouse.ChemicalEngineeringDistillationCanonicalLaneLean.MassTransfer
+import HautevilleHouse.ChemicalEngineeringDistillationCanonicalLaneLean.McCabeThiele
+import HautevilleHouse.ChemicalEngineeringDistillationCanonicalLaneLean.StageEfficiency
+import HautevilleHouse.ChemicalEngineeringDistillationCanonicalLaneLean.FenskeUnderwoodGilliland
+
+namespace HautevilleHouse
+namespace ChemicalEngineeringDistillationCanonicalLaneLean
+
+def DistillationAdmissibleClosure (A : AdmissibleClass) : Prop :=
+  bridgeClosed A ∧ gateClosed A
+
+theorem distillation_endgame (A : AdmissibleClass) :
+    DistillationAdmissibleClosure A := by
+  exact And.intro (bridge_from_admissible_class A) (gate_from_admissible_class A)
+
+end ChemicalEngineeringDistillationCanonicalLaneLean
+end HautevilleHouse
